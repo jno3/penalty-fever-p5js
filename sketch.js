@@ -11,7 +11,7 @@ function setup() {
     y: canvasSize.y - 30 * 5.8,
   };
   triggerRight = true;
-
+  clicked = false;
 }
 
 function draw() {
@@ -41,6 +41,7 @@ function ball() {
     ballSize);
 }
 
+
 function arrow() {
   var arrowSize = { x: 8, y: 30 };
   rect(
@@ -57,8 +58,34 @@ function arrow() {
   }
 
   if (triggerRight) {
-    arrowPos.x = arrowPos.x + 5;
+    arrowPos.x = arrowPos.x + 13;
   } else if (!triggerRight) {
-    arrowPos.x = arrowPos.x - 5;
+    arrowPos.x = arrowPos.x - 13;
   }
+}
+
+function arrow2() {
+  var arrowSize = { x: 8, y: 30 };
+  rect(
+    arrowPos.x,
+    arrowPos.y,
+    arrowSize.x,
+    arrowSize.y
+  )
+  if (arrowPos.x + arrowSize.x > (canvasSize.x/2)+((goalSize.x*1.5)/2)) {
+    triggerRight = false;
+  }
+  if (arrowPos.x < (canvasSize.x/2)-((goalSize.x*1.5)/2)) {
+    triggerRight = true;
+  }
+
+  if (triggerRight) {
+    arrowPos.x = arrowPos.x + 13;
+  } else if (!triggerRight) {
+    arrowPos.x = arrowPos.x - 13;
+  }
+}
+
+function mouseClicked(){
+  mouseClickedArrow1 = true;
 }
